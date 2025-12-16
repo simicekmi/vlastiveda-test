@@ -41,6 +41,18 @@
     background-color: #ffd6d6;
     border-radius: 5px;
   }
+  .match-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .match-column {
+    flex: 0 0 48%;
+    margin-bottom: 10px;
+  }
+  select {
+    margin-left: 10px;
+  }
 </style>
 </head>
 <body>
@@ -68,7 +80,8 @@ const questions = [
   {text: "Která píseň se stala českou státní hymnou?", answers: [{text: "Kde domov můj", correct: true},{text: "Ach synku, synku", correct: false},{text: "Ta naše písnička česká", correct: false}]},
   {text: "Který skladatel podporoval české národní uvědomění?", answers: [{text: "Bedřich Smetana", correct: true},{text: "Antonio Vivaldi", correct: false},{text: "Johann Sebastian Bach", correct: false}]},
   {text: "Proč měla tvorba Boženy Němcové význam pro národní obrození?", answers: [{text: "Psala česky a zobrazovala život českého lidu", correct: true},{text: "Psala pouze odborné historické spisy", correct: false},{text: "Zabývala se hlavně cizí literaturou", correct: false}]},
-  {text: "Které tvrzení o hudbě a literatuře 19. století je NEPRAVDIVÉ?", answers: [{text: "Mozart svým dílem podporoval české národní uvědomění", correct: true},{text: "Smetana psal hudbu podporující českou kulturu", correct: false},{text: "Božena Němcová psala česky a zobrazovala život lidu", correct: false}]}
+  {text: "Které tvrzení o hudbě a literatuře 19. století je NEPRAVDIVÉ?", answers: [{text: "Mozart svým dílem podporoval české národní uvědomění", correct: true},{text: "Smetana psal hudbu podporující českou kulturu", correct: false},{text: "Božena Němcová psala česky a zobrazovala život lidu", correct: false}]},
+  {text: "Přiřaď jména umělců k jejich oborům", match: [{name: "Bedřich Smetana", correct: "Hudba"},{name: "Božena Němcová", correct: "Literatura"},{name: "Josef Kajetán Tyl", correct: "Divadlo"}]}
 ];
 
 function shuffle(array) {
@@ -86,9 +99,24 @@ function renderTest() {
     const div = document.createElement('div');
     div.className = 'question';
     let html = `<h2>${index+1}. ${q.text}</h2>`;
-    q.answers.forEach(a => {
-      html += `<label><input type='radio' name='q${index+1}' value='${a.correct?1:0}'> ${a.text}</label><br>`;
-    });
+    if(q.answers){
+      q.answers.forEach(a => {
+        html += `<label><input type='radio' name='q${index+1}' value='${a.correct?1:0}'> ${a.text}</label><br>`;
+      });
+    } else if(q.match){
+      html += `<div class='match-container'>`;
+      q.match.forEach((m,i)=>{
+        html += `<div class='match-column'>${m.name}:
+        <select name='match${index+1}-${i}'>
+          <option value=''>--Vyber--</option>
+          <option value='Hudba'>Hudba</option>
+          <option value='Literatura'>Literatura</option>
+          <option value='Divadlo'>Divadlo</option>
+        </select>
+        </div>`;
+      });
+      html += `</div>`;
+    }
     div.innerHTML = html;
     form.appendChild(div);
   });
@@ -99,28 +127,40 @@ function renderTest() {
 
 function vyhodnotit() {
   let body = 0;
-  for (let i = 1; i <= questions.length; i++) {
-    const answers = document.querySelectorAll(`input[name='q${i}']`);
-    answers.forEach(a => {
-      const label = a.parentElement;
-      label.classList.remove('wrong-answer');
-      label.querySelectorAll('.icon').forEach(ic => ic.remove());
-      if(a.checked){
-        if(a.value==='1'){
-          body++;
-          label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
-        } else {
-          label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
-          label.classList.add('wrong-answer');
+  questions.forEach((q,index)=>{
+    if(q.answers){
+      const answers = document.querySelectorAll(`input[name='q${index+1}']`);
+      answers.forEach(a=>{
+        const label = a.parentElement;
+        label.classList.remove('wrong-answer');
+        label.querySelectorAll('.icon').forEach(ic=>ic.remove());
+        if(a.checked){
+          if(a.value==='1'){
+            body++;
+            label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
+          } else {
+            label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
+            label.classList.add('wrong-answer');
+          }
         }
-      }
-    });
-  }
+      });
+    } else if(q.match){
+      q.match.forEach((m,i)=>{
+        const sel = document.querySelector(`select[name='match${index+1}-${i}']`);
+        if(sel.value===m.correct){
+          body++;
+          sel.style.border='2px solid green';
+        } else {
+          sel.style.border='2px solid red';
+        }
+      });
+    }
+  });
   let hodnoceni='';
   if(body>=12) hodnoceni='Výborně! 🎉';
   else if(body>=9) hodnoceni='Dobrá práce 👍';
   else hodnoceni='Zkus si učivo ještě zopakovat 📘';
-  document.getElementById('result').innerText=`Získal(a) jsi ${body} bodů z ${questions.length}. ${hodnoceni}`;
+  document.getElementById('result').innerText=`Získal(a) jsi ${body} bodů z ${questions.length+1}. ${hodnoceni}`;
   document.getElementById('submitBtn').style.display='none';
   document.getElementById('retryBtn').style.display='inline';
 }
