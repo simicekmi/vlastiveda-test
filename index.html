@@ -154,16 +154,34 @@
 <script>
 function vyhodnotit() {
   let body = 0;
-  const checked = document.querySelectorAll('input:checked');
-  checked.forEach(o => body += Number(o.value));
+
+  // projdi všechny otázky
+  for (let i = 1; i <= 14; i++) {
+    const answers = document.querySelectorAll(`input[name="q${i}"]`);
+    answers.forEach(a => {
+      const label = a.parentElement;
+      // reset ikon
+      label.querySelectorAll('.icon').forEach(ic => ic.remove());
+
+      if (a.checked) {
+        if (a.value === "1") {
+          body++;
+          label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
+        } else {
+          label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
+        }
+      }
+    });
+  }
 
   let hodnoceni = "";
-  if (body >= 6) hodnoceni = "Výborně! 🎉";
-  else if (body >= 4) hodnoceni = "Dobrá práce 👍";
+  if (body >= 12) hodnoceni = "Výborně! 🎉";
+  else if (body >= 9) hodnoceni = "Dobrá práce 👍";
   else hodnoceni = "Zkus si učivo ještě zopakovat 📘";
 
   document.getElementById('result').innerText =
     `Získal(a) jsi ${body} bodů z 14. ${hodnoceni}`;
+} bodů z 14. ${hodnoceni}`;
 }
 </script>
 
