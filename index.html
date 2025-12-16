@@ -37,6 +37,10 @@
     font-weight: bold;
     margin-top: 20px;
   }
+  .wrong-answer {
+    background-color: #ffd6d6;
+    border-radius: 5px;
+  }
 </style>
 </head>
 <body>
@@ -52,10 +56,10 @@
 <script>
 const questions = [
   {text: "Co bylo hlavním cílem národního obrození?", answers: [{text: "Zachovat český jazyk a kulturu", correct: true},{text: "Zrušit školní docházku", correct: false},{text: "Připojit české země k Německu", correct: false}]},
-  {text: "Které tvrzení o češtině v době národního obrození je NEPRAVDIVÉ?", answers: [{text: "Čeština byla vytlačena z úřadů a škol", correct: true},{text: "Čeština byla nově vynalezena", correct: false},{text: "Čeština byla podporována národním obrozením", correct: false}]},
-  {text: "Které tvrzení o Josefu Dobrovském je NEPRAVDIVÉ?", answers: [{text: "Zkoumal český jazyk a psal o jeho pravidlech", correct: true},{text: "Vedl ozbrojené povstání", correct: false},{text: "Stavěl první české továrny", correct: false}]},
+  {text: "Které tvrzení o češtině v době národního obrození je PRAVDIVÉ?", answers: [{text: "Čeština byla vytlačena z úřadů a škol", correct: true},{text: "Čeština byla nově vynalezena", correct: false},{text: "Čeština byla podporována národním obrozením", correct: false}]},
+  {text: "Které tvrzení o vlastencích je PRAVDIVÉ?", answers: [{text: "Podporovali český jazyk a kulturu", correct: true},{text: "Prosazovali německý jazyk", correct: false},{text: "Nevěnovali se vzdělávání lidu", correct: false}]},
   {text: "Co se začalo rozvíjet v době národního obrození?", answers: [{text: "Rytířské turnaje", correct: false},{text: "Průmysl a výroba v továrnách", correct: true},{text: "Lov mamutů", correct: false}]},
-  {text: "Které tvrzení o parním stroji je NEPRAVDIVÉ?", answers: [{text: "Urychlil výrobu a dopravu", correct: true},{text: "Zpomalil práci v dílnách", correct: false},{text: "Sloužil hlavně k psaní knih", correct: false}]},
+  {text: "Které tvrzení o parním stroji je PRAVDIVÉ?", answers: [{text: "Urychlil výrobu a dopravu", correct: true},{text: "Zpomalil práci v dílnách", correct: false},{text: "Sloužil hlavně k psaní knih", correct: false}]},
   {text: "Co znamenalo heslo \"Národ sobě\"?", answers: [{text: "Češi si pomáhali a podporovali svou kulturu", correct: true},{text: "Každý se staral jen sám o sebe", correct: false},{text: "Zákaz českých spolků", correct: false}]},
   {text: "Která významná stavba v Praze vznikla díky sbírkám národa?", answers: [{text: "Národní divadlo", correct: true},{text: "Pražský hrad", correct: false},{text: "Karlův most", correct: false}]},
   {text: "Které tvrzení o ústavě (konstituci) je NEPRAVDIVÉ?", answers: [{text: "Ústava byla nepodstatný dokument, který nikoho nezajímal", correct: true},{text: "Ústava stanovovala základní zákony státu", correct: false},{text: "Ústava byla důležitá pro fungování státu", correct: false}]},
@@ -99,6 +103,7 @@ function vyhodnotit() {
     const answers = document.querySelectorAll(`input[name='q${i}']`);
     answers.forEach(a => {
       const label = a.parentElement;
+      label.classList.remove('wrong-answer');
       label.querySelectorAll('.icon').forEach(ic => ic.remove());
       if(a.checked){
         if(a.value==='1'){
@@ -106,6 +111,7 @@ function vyhodnotit() {
           label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
         } else {
           label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
+          label.classList.add('wrong-answer');
         }
       }
     });
