@@ -68,7 +68,7 @@
 <script>
 const questions = [
   {text: "Co bylo hlavním cílem národního obrození?", answers: [{text: "Zachovat český jazyk a kulturu", correct: true},{text: "Zrušit školní docházku", correct: false},{text: "Připojit české země k Německu", correct: false}]},
-  {text: "Které tvrzení o češtině v době národního obrození je PRAVDIVÉ?", answers: [{text: "Čeština byla vytlačena z úřadů a škol", correct: true},{text: "Čeština byla nově vynalezena", correct: false},{text: "Čeština byla podporována národním obrozením", correct: false}]},
+  {text: "Tomáš Garigue Masaryk byl původní profesí?", answers: [{text: "Učitel na základní škole", correct: false},{text: "Profesor na univerzitě", correct: true},{text: "Prezident republiky", correct: false}]},
   {text: "Které tvrzení o vlastencích je PRAVDIVÉ?", answers: [{text: "Podporovali český jazyk a kulturu", correct: true},{text: "Prosazovali německý jazyk", correct: false},{text: "Nevěnovali se vzdělávání lidu", correct: false}]},
   {text: "Co se začalo rozvíjet v době národního obrození?", answers: [{text: "Rytířské turnaje", correct: false},{text: "Průmysl a výroba v továrnách", correct: true},{text: "Lov mamutů", correct: false}]},
   {text: "Které tvrzení o parním stroji je PRAVDIVÉ?", answers: [{text: "Urychlil výrobu a dopravu", correct: true},{text: "Zpomalil práci v dílnách", correct: false},{text: "Sloužil hlavně k psaní knih", correct: false}]},
@@ -132,50 +132,68 @@ function renderTest() {
 }
 
 function vyhodnotit() {
-  let body = 0;
-  questions.forEach((q,index)=>{
-    if(q.answers){
-      const answers = document.querySelectorAll(`input[name='q${index+1}']`);
-      answers.forEach(a=>{
-        const label = a.parentElement;
-        label.classList.remove('wrong-answer');
-        label.querySelectorAll('.icon').forEach(ic=>ic.remove());
-        if(a.checked){
-          if(a.value==='1'){
-            body++;
-            label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
-          } else {
-            label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
-            label.classList.add('wrong-answer');
-          }
-        }
-      });
-    } else if(q.match){
-      q.match.forEach((m,i)=>{
-        const sel = document.querySelector(`select[name='match${index+1}-${i}']`);
-        if(sel.value===m.correct){
-          body++;
-          sel.style.border='2px solid green';
-        } else {
-          sel.style.border='2px solid red';
-        }
-      });
-    }
-  });
-  let hodnoceni='';
-  if(body>=12) hodnoceni='Výborně! 🎉';
-  else if(body>=9) hodnoceni='Dobrá práce 👍';
-  else hodnoceni='Zkus si učivo ještě zopakovat 📘';
-  document.getElementById('result').innerText=`Získal(a) jsi ${body} bodů z ${questions.length+1}. ${hodnoceni}`;
-  document.getElementById('submitBtn').style.display='none';
-  document.getElementById('retryBtn').style.display='inline';
+let body = 0;
+let totalPossiblePoints = 0;
+
+
+// spočítat všechny možné body
+questions.forEach(q => {
+if(q.answers) totalPossiblePoints += 1;
+else if(q.match) totalPossiblePoints += q.match.length;
+});
+
+
+questions.forEach((q,index)=>{
+if(q.answers){
+const answers = document.querySelectorAll(`input[name='q${index+1}']`);
+answers.forEach(a=>{
+const label = a.parentElement;
+label.classList.remove('wrong-answer');
+label.querySelectorAll('.icon').forEach(ic=>ic.remove());
+if(a.checked){
+if(a.value==='1'){
+body++;
+label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
+} else {
+label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:red">✘</span>');
+label.classList.add('wrong-answer');
 }
+}
+});
+} else if(q.match){
+q.match.forEach((m,i)=>{
+const sel = document.querySelector(`select[name='match${index+1}-${i}']`);
+if(sel.value===m.correct){
+body++; // správná přiřazovací odpověď
+sel.style.border='2px solid green';
+} else {
+sel.style.border='2px solid red';
+}
+});
+}
+});
+
+
+let hodnoceni='';
+if(body>=12) hodnoceni='Výborně! 🎉';
+else if(body>=9) hodnoceni='Dobrá práce 👍';
+else hodnoceni='Zkus si učivo ještě zopakovat 📘';
+
+
+// použít totalPossiblePoints místo pevného počtu
+document.getElementById('result').innerText=`Získal(a) jsi ${body} bodů z ${totalPossiblePoints}. ${hodnoceni}`;
+document.getElementById('submitBtn').style.display='none';
+document.getElementById('retryBtn').style.display='inline';
+}
+
 
 document.getElementById('submitBtn').addEventListener('click', vyhodnotit);
 document.getElementById('retryBtn').addEventListener('click', renderTest);
 
+
 renderTest();
 </script>
+
 
 </body>
 </html>
