@@ -29,6 +29,7 @@
     background: #2a6f97;
     color: white;
     cursor: pointer;
+    margin-top: 10px;
   }
   button:hover { background: #1d4f6f; }
   #result {
@@ -43,125 +44,64 @@
 <h1>Dějepis ČR – opakovací test (5. ročník)</h1>
 <p><strong>Témata:</strong> Národní obrození, průmysl v době národního obrození, Národ sobě</p>
 
-<form id="test">
-
-<div class="question">
-<h2>1. Co bylo hlavním cílem národního obrození?</h2>
-<label><input type="radio" name="q1" value="1"> Zachovat český jazyk a kulturu</label><br>
-<label><input type="radio" name="q1" value="0"> Zrušit školní docházku</label><br>
-<label><input type="radio" name="q1" value="0"> Připojit české země k Německu</label>
-</div>
-
-<div class="question">
-<h2>2. Který jazyk byl před národním obrozením v úřadech a školách používán nejčastěji?</h2>
-<label><input type="radio" name="q2" value="0"> Čeština</label><br>
-<label><input type="radio" name="q2" value="1"> Němčina</label><br>
-<label><input type="radio" name="q2" value="0"> Latina</label>
-</div>
-
-<div class="question">
-<h2>3. Která osobnost patří k národnímu obrození?</h2>
-<label><input type="radio" name="q3" value="1"> Josef Dobrovský</label><br>
-<label><input type="radio" name="q3" value="0"> Karel IV.</label><br>
-<label><input type="radio" name="q3" value="0"> Jan Hus</label>
-</div>
-
-<div class="question">
-<h2>4. Co se začalo rozvíjet v době národního obrození?</h2>
-<label><input type="radio" name="q4" value="0"> Rytířské turnaje</label><br>
-<label><input type="radio" name="q4" value="1"> Průmysl a výroba v továrnách</label><br>
-<label><input type="radio" name="q4" value="0"> Lov mamutů</label>
-</div>
-
-<div class="question">
-<h2>5. Který vynález výrazně pomohl rozvoji průmyslu?</h2>
-<label><input type="radio" name="q5" value="1"> Parní stroj</label><br>
-<label><input type="radio" name="q5" value="0"> Tiskárna</label><br>
-<label><input type="radio" name="q5" value="0"> Kompas</label>
-</div>
-
-<div class="question">
-<h2>6. Co znamenalo heslo „Národ sobě“?</h2>
-<label><input type="radio" name="q6" value="1"> Češi si pomáhali a podporovali svou kulturu</label><br>
-<label><input type="radio" name="q6" value="0"> Každý se staral jen sám o sebe</label><br>
-<label><input type="radio" name="q6" value="0"> Zákaz českých spolků</label>
-</div>
-
-<div class="question">
-<h2>7. Která významná stavba v Praze vznikla díky sbírkám národa?</h2>
-<label><input type="radio" name="q7" value="1"> Národní divadlo</label><br>
-<label><input type="radio" name="q7" value="0"> Pražský hrad</label><br>
-<label><input type="radio" name="q7" value="0"> Karlův most</label>
-</div>
-
-<div class="question">
-<h2>8. Co znamená slovo ústava (konstituce)?</h2>
-<label><input type="radio" name="q8" value="1"> Základní zákon státu</label><br>
-<label><input type="radio" name="q8" value="0"> Kronika českých dějin</label><br>
-<label><input type="radio" name="q8" value="0"> Seznam českých panovníků</label>
-</div>
-
-<div class="question">
-<h2>9. Kdo byl František Palacký?</h2>
-<label><input type="radio" name="q9" value="1"> Historik a významná osobnost národního obrození</label><br>
-<label><input type="radio" name="q9" value="0"> Král českých zemí</label><br>
-<label><input type="radio" name="q9" value="0"> Vynálezce parního stroje</label>
-</div>
-
-<div class="question">
-<h2>10. Jaké přízvisko má František Palacký?</h2>
-<label><input type="radio" name="q10" value="1"> Otec národa</label><br>
-<label><input type="radio" name="q10" value="0"> Učitel národů</label><br>
-<label><input type="radio" name="q10" value="0"> Král železný a zlatý</label>
-</div>
-
-<div class="question">
-<h2>11. Čím se proslavil Josef Kajetán Tyl?</h2>
-<label><input type="radio" name="q11" value="1"> Divadelními hrami a písní Kde domov můj</label><br>
-<label><input type="radio" name="q11" value="0"> Stavbou Národního divadla</label><br>
-<label><input type="radio" name="q11" value="0"> Vedením české armády</label>
-</div>
-
-<div class="question">
-<h2>12. Která píseň se stala českou státní hymnou?</h2>
-<label><input type="radio" name="q12" value="1"> Kde domov můj</label><br>
-<label><input type="radio" name="q12" value="0"> Ach synku, synku</label><br>
-<label><input type="radio" name="q12" value="0"> Ta naše písnička česká</label>
-</div>
-
-<div class="question">
-<h2>13. Kdo patřil mezi významné české hudební skladatele 19. století?</h2>
-<label><input type="radio" name="q13" value="1"> Bedřich Smetana</label><br>
-<label><input type="radio" name="q13" value="0"> Wolfgang Amadeus Mozart</label><br>
-<label><input type="radio" name="q13" value="0"> Ludwig van Beethoven</label>
-</div>
-
-<div class="question">
-<h2>14. Který spisovatel psal česky a podporoval českou kulturu v době národního obrození?</h2>
-<label><input type="radio" name="q14" value="1"> Božena Němcová</label><br>
-<label><input type="radio" name="q14" value="0"> William Shakespeare</label><br>
-<label><input type="radio" name="q14" value="0"> Jules Verne</label>
-</div>
-
-<button type="button" onclick="vyhodnotit()">Vyhodnotit test</button>
-</form>
-
+<form id="test"></form>
 <p id="result"></p>
+<button id="submitBtn">Vyhodnotit celý test</button>
+<button id="retryBtn" style="display:none;">Zkusit znovu</button>
 
 <script>
+const questions = [
+  {text: "Co bylo hlavním cílem národního obrození?", answers: [{text: "Zachovat český jazyk a kulturu", correct: true},{text: "Zrušit školní docházku", correct: false},{text: "Připojit české země k Německu", correct: false}]},
+  {text: "Které tvrzení o češtině v době národního obrození je NEPRAVDIVÉ?", answers: [{text: "Čeština byla vytlačena z úřadů a škol", correct: true},{text: "Čeština byla nově vynalezena", correct: false},{text: "Čeština byla podporována národním obrozením", correct: false}]},
+  {text: "Které tvrzení o Josefu Dobrovském je NEPRAVDIVÉ?", answers: [{text: "Zkoumal český jazyk a psal o jeho pravidlech", correct: true},{text: "Vedl ozbrojené povstání", correct: false},{text: "Stavěl první české továrny", correct: false}]},
+  {text: "Co se začalo rozvíjet v době národního obrození?", answers: [{text: "Rytířské turnaje", correct: false},{text: "Průmysl a výroba v továrnách", correct: true},{text: "Lov mamutů", correct: false}]},
+  {text: "Které tvrzení o parním stroji je NEPRAVDIVÉ?", answers: [{text: "Urychlil výrobu a dopravu", correct: true},{text: "Zpomalil práci v dílnách", correct: false},{text: "Sloužil hlavně k psaní knih", correct: false}]},
+  {text: "Co znamenalo heslo \"Národ sobě\"?", answers: [{text: "Češi si pomáhali a podporovali svou kulturu", correct: true},{text: "Každý se staral jen sám o sebe", correct: false},{text: "Zákaz českých spolků", correct: false}]},
+  {text: "Která významná stavba v Praze vznikla díky sbírkám národa?", answers: [{text: "Národní divadlo", correct: true},{text: "Pražský hrad", correct: false},{text: "Karlův most", correct: false}]},
+  {text: "Které tvrzení o ústavě (konstituci) je NEPRAVDIVÉ?", answers: [{text: "Ústava byla nepodstatný dokument, který nikoho nezajímal", correct: true},{text: "Ústava stanovovala základní zákony státu", correct: false},{text: "Ústava byla důležitá pro fungování státu", correct: false}]},
+  {text: "Které tvrzení o Františku Palackém je NEPRAVDIVÉ?", answers: [{text: "Byl král českých zemí", correct: true},{text: "Historik a významná osobnost národního obrození", correct: false},{text: "Otec národa", correct: false}]},
+  {text: "Čím se proslavil Josef Kajetán Tyl?", answers: [{text: "Divadelními hrami a písní Kde domov můj", correct: true},{text: "Stavbou Národního divadla", correct: false},{text: "Vedením české armády", correct: false}]},
+  {text: "Která píseň se stala českou státní hymnou?", answers: [{text: "Kde domov můj", correct: true},{text: "Ach synku, synku", correct: false},{text: "Ta naše písnička česká", correct: false}]},
+  {text: "Který skladatel podporoval české národní uvědomění?", answers: [{text: "Bedřich Smetana", correct: true},{text: "Antonio Vivaldi", correct: false},{text: "Johann Sebastian Bach", correct: false}]},
+  {text: "Proč měla tvorba Boženy Němcové význam pro národní obrození?", answers: [{text: "Psala česky a zobrazovala život českého lidu", correct: true},{text: "Psala pouze odborné historické spisy", correct: false},{text: "Zabývala se hlavně cizí literaturou", correct: false}]},
+  {text: "Které tvrzení o hudbě a literatuře 19. století je NEPRAVDIVÉ?", answers: [{text: "Mozart svým dílem podporoval české národní uvědomění", correct: true},{text: "Smetana psal hudbu podporující českou kulturu", correct: false},{text: "Božena Němcová psala česky a zobrazovala život lidu", correct: false}]}
+];
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function renderTest() {
+  const form = document.getElementById('test');
+  form.innerHTML = '';
+  shuffle(questions);
+  questions.forEach((q, index) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    let html = `<h2>${index+1}. ${q.text}</h2>`;
+    q.answers.forEach(a => {
+      html += `<label><input type='radio' name='q${index+1}' value='${a.correct?1:0}'> ${a.text}</label><br>`;
+    });
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+  document.getElementById('result').innerText = '';
+  document.getElementById('submitBtn').style.display = 'inline';
+  document.getElementById('retryBtn').style.display = 'none';
+}
+
 function vyhodnotit() {
   let body = 0;
-
-  // projdi všechny otázky
-  for (let i = 1; i <= 14; i++) {
-    const answers = document.querySelectorAll(`input[name="q${i}"]`);
+  for (let i = 1; i <= questions.length; i++) {
+    const answers = document.querySelectorAll(`input[name='q${i}']`);
     answers.forEach(a => {
       const label = a.parentElement;
-      // reset ikon
       label.querySelectorAll('.icon').forEach(ic => ic.remove());
-
-      if (a.checked) {
-        if (a.value === "1") {
+      if(a.checked){
+        if(a.value==='1'){
           body++;
           label.insertAdjacentHTML('beforeend', ' <span class="icon" style="color:green">✔</span>');
         } else {
@@ -170,16 +110,19 @@ function vyhodnotit() {
       }
     });
   }
-
-  let hodnoceni = "";
-  if (body >= 12) hodnoceni = "Výborně! 🎉";
-  else if (body >= 9) hodnoceni = "Dobrá práce 👍";
-  else hodnoceni = "Zkus si učivo ještě zopakovat 📘";
-
-  document.getElementById('result').innerText =
-    `Získal(a) jsi ${body} bodů z 14. ${hodnoceni}`;
-} bodů z 14. ${hodnoceni}`;
+  let hodnoceni='';
+  if(body>=12) hodnoceni='Výborně! 🎉';
+  else if(body>=9) hodnoceni='Dobrá práce 👍';
+  else hodnoceni='Zkus si učivo ještě zopakovat 📘';
+  document.getElementById('result').innerText=`Získal(a) jsi ${body} bodů z ${questions.length}. ${hodnoceni}`;
+  document.getElementById('submitBtn').style.display='none';
+  document.getElementById('retryBtn').style.display='inline';
 }
+
+document.getElementById('submitBtn').addEventListener('click', vyhodnotit);
+document.getElementById('retryBtn').addEventListener('click', renderTest);
+
+renderTest();
 </script>
 
 </body>
