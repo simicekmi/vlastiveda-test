@@ -95,6 +95,58 @@
 </div>
 
 <button type="button" onclick="vyhodnotit()">Vyhodnotit test</button>
+
+
+<div class="question">
+<h2>8. Co znamená slovo ústava (konstituce)?</h2>
+<label><input type="radio" name="q8" value="1"> Základní zákon státu</label><br>
+<label><input type="radio" name="q8" value="0"> Kronika českých dějin</label><br>
+<label><input type="radio" name="q8" value="0"> Seznam českých panovníků</label>
+</div>
+
+<div class="question">
+<h2>9. Kdo byl František Palacký?</h2>
+<label><input type="radio" name="q9" value="1"> Historik a významná osobnost národního obrození</label><br>
+<label><input type="radio" name="q9" value="0"> Král českých zemí</label><br>
+<label><input type="radio" name="q9" value="0"> Vynálezce parního stroje</label>
+</div>
+
+<div class="question">
+<h2>10. Jaké přízvisko má František Palacký?</h2>
+<label><input type="radio" name="q10" value="1"> Otec národa</label><br>
+<label><input type="radio" name="q10" value="0"> Učitel národů</label><br>
+<label><input type="radio" name="q10" value="0"> Král železný a zlatý</label>
+</div>
+
+<div class="question">
+<h2>11. Čím se proslavil Josef Kajetán Tyl?</h2>
+<label><input type="radio" name="q11" value="1"> Divadelními hrami a písní Kde domov můj</label><br>
+<label><input type="radio" name="q11" value="0"> Stavbou Národního divadla</label><br>
+<label><input type="radio" name="q11" value="0"> Vedením české armády</label>
+</div>
+
+<div class="question">
+<h2>12. Která píseň se stala českou státní hymnou?</h2>
+<label><input type="radio" name="q12" value="1"> Kde domov můj</label><br>
+<label><input type="radio" name="q12" value="0"> Ach synku, synku</label><br>
+<label><input type="radio" name="q12" value="0"> Ta naše písnička česká</label>
+</div>
+
+<div class="question">
+<h2>13. Kdo patřil mezi významné české hudební skladatele 19. století?</h2>
+<label><input type="radio" name="q13" value="1"> Bedřich Smetana</label><br>
+<label><input type="radio" name="q13" value="0"> Wolfgang Amadeus Mozart</label><br>
+<label><input type="radio" name="q13" value="0"> Ludwig van Beethoven</label>
+</div>
+
+<div class="question">
+<h2>14. Který spisovatel psal česky a podporoval českou kulturu v době národního obrození?</h2>
+<label><input type="radio" name="q14" value="1"> Božena Němcová</label><br>
+<label><input type="radio" name="q14" value="0"> William Shakespeare</label><br>
+<label><input type="radio" name="q14" value="0"> Jules Verne</label>
+</div>
+
+<button type="button" onclick="vyhodnotit()">Vyhodnotit test</button>
 </form>
 
 <p id="result"></p>
@@ -111,7 +163,7 @@ function vyhodnotit() {
   else hodnoceni = "Zkus si učivo ještě zopakovat 📘";
 
   document.getElementById('result').innerText =
-    `Získal(a) jsi ${body} bodů z 7. ${hodnoceni}`;
+    `Získal(a) jsi ${body} bodů z 14. ${hodnoceni}`;
 }
 </script>
 
