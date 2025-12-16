@@ -104,6 +104,7 @@ function renderTest() {
     div.className = 'question';
     let html = `<h2>${index+1}. ${q.text}</h2>`;
     if(q.answers){
+       shuffle(q.answers);
       q.answers.forEach(a => {
         html += `<label><input type='radio' name='q${index+1}' value='${a.correct?1:0}'> ${a.text}</label><br>`;
       });
