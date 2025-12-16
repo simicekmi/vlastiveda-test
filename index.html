@@ -80,6 +80,10 @@ const questions = [
   {text: "Která píseň se stala českou státní hymnou?", answers: [{text: "Kde domov můj", correct: true},{text: "Ach synku, synku", correct: false},{text: "Ta naše písnička česká", correct: false}]},
   {text: "Který skladatel podporoval české národní uvědomění?", answers: [{text: "Bedřich Smetana", correct: true},{text: "Antonio Vivaldi", correct: false},{text: "Johann Sebastian Bach", correct: false}]},
   {text: "Proč měla tvorba Boženy Němcové význam pro národní obrození?", answers: [{text: "Psala česky a zobrazovala život českého lidu", correct: true},{text: "Psala pouze odborné historické spisy", correct: false},{text: "Zabývala se hlavně cizí literaturou", correct: false}]},
+  {text: "Jak se jmenovalo první obrozenecké divadlo u nás?", answers: [{text: "Bouda", correct: true},{text: "Budka", correct: false},{text: "Dílna", correct: false}]},
+  {text: "Proč se vlastencům říkalo také buditelé?", answers: [{text: "Snažili se probouzet český národ", correct: true},{text: "Stavěli barikády", correct: false},{text: "Šířili křesťanství", correct: false}]},
+  {text: "Kdy došlo k revoluci, že císař povolil?", answers: [{text: "1848", correct: true},{text: "1918", correct: false},{text: "1868", correct: false}]},
+  {text: "Jak dlouho vládl císař František Josef I.?", answers: [{text: "68 let", correct: true},{text: "58 let", correct: false},{text: "78 let", correct: false}]},
   {text: "Které tvrzení o hudbě a literatuře 19. století je NEPRAVDIVÉ?", answers: [{text: "Mozart svým dílem podporoval české národní uvědomění", correct: true},{text: "Smetana psal hudbu podporující českou kulturu", correct: false},{text: "Božena Němcová psala česky a zobrazovala život lidu", correct: false}]},
   {text: "Přiřaď jména umělců k jejich oborům", match: [{name: "Bedřich Smetana", correct: "Hudba"},{name: "Božena Němcová", correct: "Literatura"},{name: "Václav Myslbek", correct: "Sochařství"},{name: "Alois Jirásek", correct: "Literatura"},{name: "Antonín Dvořák", correct: "Hudba"},{name: "Josef Kajetán Tyl", correct: "Divadlo"}]}
 ];
@@ -112,6 +116,7 @@ function renderTest() {
           <option value='Hudba'>Hudba</option>
           <option value='Literatura'>Literatura</option>
           <option value='Divadlo'>Divadlo</option>
+          <option value='Sochařství'>Sochařství</option>
         </select>
         </div>`;
       });
