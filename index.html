@@ -2,47 +2,116 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>Vlastivěda – test</title>
+<title>Dějepis ČR – Národní obrození</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body { font-family: Arial; max-width: 700px; margin: auto; }
-  h2 { color: #2c7; }
-  button { padding: 10px 20px; font-size: 16px; }
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #f7f9fc;
+  }
+  h1 { color: #2a6f97; }
+  h2 { margin-top: 30px; }
+  .question {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2a6f97;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover { background: #1d4f6f; }
+  #result {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
 </style>
 </head>
-
 <body>
 
-<h1>Vlastivěda – opakovací test</h1>
+<h1>Dějepis ČR – opakovací test (5. ročník)</h1>
+<p><strong>Témata:</strong> Národní obrození, průmysl v době národního obrození, Národ sobě</p>
 
 <form id="test">
 
-<h2>1. Hlavní město České republiky je:</h2>
-<label><input type="radio" name="q1" value="0"> Brno</label><br>
-<label><input type="radio" name="q1" value="1"> Praha</label><br>
-<label><input type="radio" name="q1" value="0"> Ostrava</label>
+<div class="question">
+<h2>1. Co bylo hlavním cílem národního obrození?</h2>
+<label><input type="radio" name="q1" value="1"> Zachovat český jazyk a kulturu</label><br>
+<label><input type="radio" name="q1" value="0"> Zrušit školní docházku</label><br>
+<label><input type="radio" name="q1" value="0"> Připojit české země k Německu</label>
+</div>
 
-<h2>2. Česká republika sousedí s Německem:</h2>
-<label><input type="radio" name="q2" value="1"> Ano</label><br>
-<label><input type="radio" name="q2" value="0"> Ne</label>
+<div class="question">
+<h2>2. Který jazyk byl před národním obrozením v úřadech a školách používán nejčastěji?</h2>
+<label><input type="radio" name="q2" value="0"> Čeština</label><br>
+<label><input type="radio" name="q2" value="1"> Němčina</label><br>
+<label><input type="radio" name="q2" value="0"> Latina</label>
+</div>
 
-<br><br>
-<button type="button" onclick="vyhodnot()">Vyhodnotit</button>
+<div class="question">
+<h2>3. Která osobnost patří k národnímu obrození?</h2>
+<label><input type="radio" name="q3" value="1"> Josef Dobrovský</label><br>
+<label><input type="radio" name="q3" value="0"> Karel IV.</label><br>
+<label><input type="radio" name="q3" value="0"> Jan Hus</label>
+</div>
 
+<div class="question">
+<h2>4. Co se začalo rozvíjet v době národního obrození?</h2>
+<label><input type="radio" name="q4" value="0"> Rytířské turnaje</label><br>
+<label><input type="radio" name="q4" value="1"> Průmysl a výroba v továrnách</label><br>
+<label><input type="radio" name="q4" value="0"> Lov mamutů</label>
+</div>
+
+<div class="question">
+<h2>5. Který vynález výrazně pomohl rozvoji průmyslu?</h2>
+<label><input type="radio" name="q5" value="1"> Parní stroj</label><br>
+<label><input type="radio" name="q5" value="0"> Tiskárna</label><br>
+<label><input type="radio" name="q5" value="0"> Kompas</label>
+</div>
+
+<div class="question">
+<h2>6. Co znamenalo heslo „Národ sobě“?</h2>
+<label><input type="radio" name="q6" value="1"> Češi si pomáhali a podporovali svou kulturu</label><br>
+<label><input type="radio" name="q6" value="0"> Každý se staral jen sám o sebe</label><br>
+<label><input type="radio" name="q6" value="0"> Zákaz českých spolků</label>
+</div>
+
+<div class="question">
+<h2>7. Která významná stavba v Praze vznikla díky sbírkám národa?</h2>
+<label><input type="radio" name="q7" value="1"> Národní divadlo</label><br>
+<label><input type="radio" name="q7" value="0"> Pražský hrad</label><br>
+<label><input type="radio" name="q7" value="0"> Karlův most</label>
+</div>
+
+<button type="button" onclick="vyhodnotit()">Vyhodnotit test</button>
 </form>
 
-<p id="vysledek"></p>
+<p id="result"></p>
 
 <script>
-function vyhodnot() {
+function vyhodnotit() {
   let body = 0;
-  const odpovedi = document.querySelectorAll('input:checked');
-  odpovedi.forEach(o => body += Number(o.value));
+  const checked = document.querySelectorAll('input:checked');
+  checked.forEach(o => body += Number(o.value));
 
-  let text = `Získal(a) jsi ${body} bodů.`;
-  if (body === 2) text += " Skvělé! 🎉";
-  else text += " Zkus si test zopakovat.";
+  let hodnoceni = "";
+  if (body >= 6) hodnoceni = "Výborně! 🎉";
+  else if (body >= 4) hodnoceni = "Dobrá práce 👍";
+  else hodnoceni = "Zkus si učivo ještě zopakovat 📘";
 
-  document.getElementById("vysledek").innerText = text;
+  document.getElementById('result').innerText =
+    `Získal(a) jsi ${body} bodů z 7. ${hodnoceni}`;
 }
 </script>
 
